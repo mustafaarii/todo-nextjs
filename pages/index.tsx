@@ -27,7 +27,6 @@ const Home: React.FC<IHome> = ({ teams }) => {
             <Team name={person.name} title={person.username + " | " + person.email} />
           ))
         }
-
       </Container>
     </main>
   )

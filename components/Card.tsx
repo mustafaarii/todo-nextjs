@@ -26,9 +26,6 @@ export const Card: React.FC<ICard> = ({ img, title, id }) => {
                             <a className="text-gray-900">Halley Frank</a></small>
                     </p>
                     <p className="mb-4 pb-2">
-                        Suspendisse in volutpat massa. Nulla facilisi. Sed aliquet
-                        diam orci, nec ornare metus semper sed. Integer volutpat
-                        ornare erat sit amet rutrum.
                     </p>
                     {
                         id &&

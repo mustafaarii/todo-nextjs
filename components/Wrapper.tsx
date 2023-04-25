@@ -11,7 +11,7 @@ export const Wrapper : React.FC<IWrapper> = ({children}) => {
         <Navbar>
             <NavbarLink href='/' text='Home'/>
             <NavbarLink href='/posts' text='Posts' />
-            <NavbarLink href='/admin' text='Admin'/>
+            <NavbarLink href='/admin/signin' text='Admin'/>
         </Navbar>
         {children}
     </div>

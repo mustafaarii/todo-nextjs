@@ -9,8 +9,8 @@ interface IContainer {
 }
 export const Container: React.FC<IContainer> = ({ title, children, grid, className}) => {
     return (
-        <div className={`container my-24 px-6 mx-auto`}>
-            <section className="mb-32 text-gray-800 text-center">
+        <div className={`container px-6 mx-auto m-6`}>
+            <section className="text-gray-800 text-center">
                 <h2 className="text-3xl font-bold mb-12 pb-4 text-center">{title}</h2>
 
                 {

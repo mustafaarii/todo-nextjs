@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
+import { Pagination } from '@/components/Pagination'
 
+interface IPosts {
+    posts: Array<any>
+}
 
-export default function posts() {
+const posts : React.FC<IPosts> = ({posts}) => {
+
     return (
         <div>
             <Head>
@@ -12,12 +17,25 @@ export default function posts() {
             </Head>
 
             <Container title='Posts' grid col={4}>
-                <Card img='https://mdbcdn.b-cdn.net/img/new/standard/city/081.webp' />
-                <Card img='https://mdbcdn.b-cdn.net/img/new/standard/city/081.webp' />
-                <Card img='https://mdbcdn.b-cdn.net/img/new/standard/city/081.webp' />
-                <Card img='https://mdbcdn.b-cdn.net/img/new/standard/city/081.webp' />
-                <Card img='https://mdbcdn.b-cdn.net/img/new/standard/city/081.webp' />
+                {
+                    posts.map((post:any) => (
+                        <Card img={post.url} title={post.title} id={post.id} />
+                    ))
+                }
             </Container>
         </div>
     )
 }
+
+export const getServerSideProps = async (context:any) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=20`);
+    const posts = await res.json();
+
+    return {
+        props: {
+            posts
+        }
+    }
+}
+
+export default posts;

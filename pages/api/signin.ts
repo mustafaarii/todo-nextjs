@@ -9,7 +9,11 @@ export interface SigninApiRequest extends NextApiRequest {
 
 export default function handler(
   req: SigninApiRequest,
-  res: NextApiResponse<AuthDTO>
+  res: NextApiResponse<any>
 ) {
-  res.status(200).json({email: "asfsaf"})
+  if (req.method !== 'POST') {
+    res.status(405).send({ message: 'Only POST requests allowed' })
+    return
+  }
+  res.status(200).json(req.body)
 }

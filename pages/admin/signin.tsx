@@ -15,7 +15,7 @@ const signin = () => {
 
     const [user, setUser] = useState<AuthDTO>({});
     const router = useRouter(); // yönlendirme işlemleri için useRouter metodunu kullanabiliriz.
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<any>();
 
     const {
         authInfos
@@ -31,7 +31,7 @@ const signin = () => {
     }, [])
 
     const handleLogin = () => {
-        dispatch(login({...user, userId: 1}))
+        dispatch(login(user))
         router.push("/admin")
     }
 

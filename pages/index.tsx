@@ -24,7 +24,7 @@ const Home: React.FC<IHome> = ({ teams }) => {
       <Container grid>
         {
           teams?.map((person: any) => (
-            <Team name={person.name} title={person.username + " | " + person.email} />
+            <Team key={person.id} name={person.name} title={person.username + " | " + person.email} />
           ))
         }
       </Container>

@@ -4,20 +4,20 @@ import { Input } from '@/src/components/form/Input';
 import Head from 'next/head';
 import React, { useState } from 'react'
 import { IPostDTO } from '../posts';
+import { Alert, AlertType } from '@/src/components/Alert';
 
 const add = () => {
     const [post, setPost] = useState<any>(new IPostDTO());
+    const [addPostFlag, setAddPostFlag] = useState<boolean>(false);
 
     const onChangeInput = (name: string, val: string) => {
         const newPost = post;
         newPost[name] = val;
-        console.log(newPost);
-
         setPost({ ...newPost })
     }
 
     const save = async () => {
-        await fetch('https://jsonplaceholder.typicode.com/posts', {
+        const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
             body: JSON.stringify({
                 title: post.title,
@@ -28,6 +28,9 @@ const add = () => {
             },
         });
 
+        if(res.status === 201) {
+            setAddPostFlag(true);
+        }
     }
 
     return (
@@ -35,7 +38,11 @@ const add = () => {
             <Head>
                 <title>Add Post | Admin Panel</title>
             </Head>
-            <Container>
+
+            <Container className="flex flex-col gap-4">
+            {
+                addPostFlag && <Alert title='post added successfully.' type={AlertType.SUCCESS} />
+            }
                 <Input name='title' placeholder='Title' value={post.title} onChange={(key: string, val: string) => { onChangeInput(key, val) }} />
                 <Input name='body' placeholder='Body' value={post.body} onChange={(key: string, val: string) => { onChangeInput(key, val) }} />
                 <Button title='Add Post' onClick={save} type={ButtonType.SUCCESS} />

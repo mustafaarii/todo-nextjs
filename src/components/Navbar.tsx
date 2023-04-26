@@ -14,7 +14,7 @@ export const Navbar : React.FC<INavbar> = ({children}) => {
              <Image src="/next.svg" alt='logo' width={40} height={40}/>
             </a>
             {/* Left navigation links */}
-            <ul className="list-style-none mr-auto flex flex-col pl-0 lg:flex-row">
+            <ul className="list-style-none mr-auto flex flex-col pl-0 lg:flex-row w-full">
               {children}
             </ul>
           </div>

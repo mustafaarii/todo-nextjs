@@ -22,7 +22,7 @@ export const Input: React.FC<IInput> = ({ placeholder, onChange, value, name, ty
                 name={name}
                 onChange={(e:any)=> {
                     console.log(e.target.value);
-                    onChange && onChange(e.target.value);
+                    onChange && onChange(name, e.target.value);
                 }}
                 value={value}
             />

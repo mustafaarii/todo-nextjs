@@ -4,6 +4,7 @@ import { NavbarLink } from './NavbarLink'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, ButtonType } from './Button'
 import { logout } from '../redux/reducers/AuthSlice'
+import { useRouter } from 'next/router'
 
 interface IWrapper {
   children?: React.ReactNode
@@ -11,6 +12,7 @@ interface IWrapper {
 export const Wrapper: React.FC<IWrapper> = ({ children }) => {
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const {
     authInfos
@@ -28,7 +30,10 @@ export const Wrapper: React.FC<IWrapper> = ({ children }) => {
         <NavbarLink href='/admin/signin' text='Admin' />
         <NavbarLink href='#' text={authInfos.email} className='float-right' />
         {
-          authInfos.isAuth && <Button title='Logout' type={ButtonType.NORMAL} onClick={() => dispatch(logout())}/>
+          authInfos.isAuth && <Button title='Logout' type={ButtonType.NORMAL} onClick={() =>{
+            dispatch(logout());
+            router.push("/")
+          }}/>
         }
       </Navbar>
       {children}

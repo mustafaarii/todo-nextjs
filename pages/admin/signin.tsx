@@ -31,7 +31,7 @@ const signin = () => {
     }, [])
 
     const handleLogin = () => {
-        dispatch(login({user, userId: 1}))
+        dispatch(login({...user, userId: 1}))
         router.push("/admin")
     }
 

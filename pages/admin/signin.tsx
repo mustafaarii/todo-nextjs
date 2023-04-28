@@ -2,7 +2,7 @@ import { Button, ButtonType } from '@/src/components/Button';
 import { Input, InputType } from '@/src/components/form/Input';
 import { login } from '@/src/redux/reducers/AuthSlice';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useRouter, Router } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 

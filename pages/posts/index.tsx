@@ -36,6 +36,8 @@ const index: React.FC<IPosts> = ({ posts }) => {
 export const getServerSideProps = async (context: any) => {
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=20`);
     const posts: Array<IPostDTO> = await res.json();
+    const delay = (s:number) => new Promise(resolve => setTimeout(resolve, s))
+    await delay(2000)
 
     return {
         props: {
